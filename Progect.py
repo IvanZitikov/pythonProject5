@@ -15,8 +15,14 @@ print(player_2+" Вы играете за 0")
 
 def moves():
     while True:
-        x, y = map(int, input(" введите координаты через пробел(вводите ТОЛЬКО цифры от 0 до 2) : ").split())
-
+        x, y = input(" введите координаты через пробел(вводите ТОЛЬКО цифры от 0 до 2) : ").split()
+        x,y = map(int(x,y))
+        if len(x,y) != 1:
+            print(" Ошибка ввода,пожалуйста повнимательнее! ")
+            continue
+        if not x.isdigit() or y.isdigit():
+            print(" Вводите только цифры от 0 до 2 ")
+            continue
         if 0 > x or x > 2 or 0 > y or y > 2:
             print(" Координаты не верны,вводите аккуратней :) ")
             continue
@@ -25,6 +31,7 @@ def moves():
             continue
 
         return x, y
+
 def win():
     if matrix_0[0][0] == " X " and matrix_0[0][1] == " X " and matrix_0[0][2] == " X ":
         print(player_1 + " Вы победили! Поздравляем!!!")
